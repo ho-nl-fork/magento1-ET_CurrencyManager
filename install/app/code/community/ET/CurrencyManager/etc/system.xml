@@ -1,0 +1,220 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * NOTICE OF LICENSE
+ *
+ * You may not sell, sub-license, rent or lease
+ * any portion of the Software or Documentation to anyone.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade to newer
+ * versions in the future.
+ *
+ * @category   ET
+ * @package    ET_CurrencyManager
+ * @copyright  Copyright (c) 2012 ET Web Solutions (http://etwebsolutions.com)
+ * @contacts   support@etwebsolutions.com
+ * @license    http://shop.etwebsolutions.com/etws-license-free-v1/   ETWS Free License (EFL1)
+ */
+ -->
+<config>
+    <tabs>
+        <etall translate="label">
+            <label>ET Extensions</label>
+            <sort_order>400</sort_order>
+        </etall>
+    </tabs>
+
+    <sections>
+        <currency>
+            <groups>
+                <options>
+                    <fields>
+                        <currencymanageroptions translate="label">
+                            <label>ET Currency Manager</label>
+                            <frontend_type>label</frontend_type>
+                            <frontend_model>currencymanager/adminhtml_system_config_form_field_linktooptions</frontend_model>
+                            <sort_order>999</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </currencymanageroptions>
+                    </fields>
+                </options>
+            </groups>
+        </currency>
+
+        <currencymanager translate="label" module="currencymanager">
+            <label>Currency Manager</label>
+            <tab>etall</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>300</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <info translate="label">
+                    <label>Currency Manager information</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <support_information>
+                            <frontend_model>currencymanager/adminhtml_support</frontend_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </support_information>
+                    </fields>
+                </info>
+                <general translate="label">
+                    <label>Currency Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <heading_frontend translate="label">
+                            <label>Frontend specific options</label>
+                            <frontend_model>currencymanager/adminhtml_heading</frontend_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_frontend>
+                        <enabled translate="label">
+                            <label>Enabled for Frontend</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <excludecheckout translate="label comment">
+                            <label>Exclude for checkout</label>
+                            <comment><![CDATA[If Yes - options [Precision] and [Replace Zero Price] will not affect display of prices in checkout.]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </excludecheckout>
+
+                        <heading_admin translate="label">
+                            <label>Admin specific options</label>
+                            <frontend_model>currencymanager/adminhtml_heading</frontend_model>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_admin>
+                        <enabledadm translate="label">
+                            <label>Enabled for Admin</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>210</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabledadm>
+                        <input_admin translate="label">
+                            <label>Enable for Inputs</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>220</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enabledadm>1</enabledadm></depends>
+                        </input_admin>
+
+
+                        <heading_global translate="label">
+                            <label>Currency options (global)</label>
+                            <frontend_model>currencymanager/adminhtml_heading</frontend_model>
+                            <sort_order>300</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_global>
+                        <precision translate="label comment">
+                            <label>Precision</label>
+                            <comment>Number of decimal (e.g. 0, 1, 2). Default: 0</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>310</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </precision>
+                        <cutzerodecimal translate="label comment">
+                            <label>Cut Zero Decimals</label>
+                            <comment>If Yes price will be 99 instead of 99.00, but 99.99 if price 99.99</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>320</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cutzerodecimal>
+
+                        <cutzerodecimal_suffix translate="label comment">
+                            <label>Replaces Cuted Zero Decimals</label>
+                            <comment>Used only if Cut Zero Decimals = Yes, default ",-"</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>325</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cutzerodecimal_suffix>
+
+                        <position translate="label">
+                            <label>Symbol position</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>currencymanager/typeposition</source_model>
+                            <sort_order>330</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </position>
+                        <display translate="label comment">
+                            <label>Currency symbol use</label>
+                            <comment>e.g. Symbol = Ls, Short name = LVL, Name = Latvian Lats</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>currencymanager/typesymboluse</source_model>
+                            <sort_order>340</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </display>
+
+                        <heading_specific translate="label">
+                            <label>Currency options (for specific currency)</label>
+                            <frontend_model>currencymanager/adminhtml_heading</frontend_model>
+                            <sort_order>400</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </heading_specific>
+                        <symbolreplace translate="label">
+                            <label>Currency specific options</label>
+                            <frontend_type>select</frontend_type>
+                            <frontend_model>currencymanager/adminhtml_symbolreplace</frontend_model>
+                            <backend_model>adminhtml/system_config_backend_serialized</backend_model>
+                            <sort_order>410</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </symbolreplace>
+                    </fields>
+                </general>
+            </groups>
+        </currencymanager>
+    </sections>
+</config>

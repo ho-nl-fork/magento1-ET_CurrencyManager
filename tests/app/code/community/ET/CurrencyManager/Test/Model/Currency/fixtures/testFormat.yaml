@@ -1,0 +1,2 @@
+config:
+ default/currencymanager/general/precision: 2

@@ -1,0 +1,216 @@
+0--1-0---1-16:
+ formatted_number:  0
+ formatted_string: |
+   0
+0.01--1-0---1-16:
+ formatted_number:  0
+ formatted_string: |
+   0
+0.001--1-0---1-16:
+ formatted_number:  0
+ formatted_string: |
+   0
+0.99--1-0---1-16:
+ formatted_number:  0
+ formatted_string: |
+   0
+5.49--1-0---1-16:
+ formatted_number:  10
+ formatted_string: |
+   10
+5.5--1-0---1-16:
+ formatted_number:  10
+ formatted_string: |
+   10
+1222.49--1-0---1-16:
+ formatted_number:  1220
+ formatted_string: |
+   1220
+1222.9999--1-0---1-16:
+ formatted_number:  1220
+ formatted_string: |
+   1220
+1222.4449--1-0---1-16:
+ formatted_number:  1220
+ formatted_string: |
+   1220
+1222.4499--1-0---1-16:
+ formatted_number:  1220
+ formatted_string: |
+   1220
+33--1-0---1-16:
+ formatted_number:  30
+ formatted_string: |
+   30
+123456789--1-0---1-16:
+ formatted_number:  123456790
+ formatted_string: |
+   123456790
+-0.01--1-0---1-16:
+ formatted_number:  0
+ formatted_string: |
+   0
+-0.001--1-0---1-16:
+ formatted_number:  0
+ formatted_string: |
+   0
+-0.99--1-0---1-16:
+ formatted_number:  0
+ formatted_string: |
+   0
+-5.49--1-0---1-16:
+ formatted_number:  -10
+ formatted_string: |
+   -10
+-5.5--1-0---1-16:
+ formatted_number:  -10
+ formatted_string: |
+   -10
+-1222.49--1-0---1-16:
+ formatted_number:  -1220
+ formatted_string: |
+   -1220
+-1222.9999--1-0---1-16:
+ formatted_number:  -1220
+ formatted_string: |
+   -1220
+-1222.4449--1-0---1-16:
+ formatted_number:  -1220
+ formatted_string: |
+   -1220
+-1222.4499--1-0---1-16:
+ formatted_number:  -1220
+ formatted_string: |
+   -1220
+-33--1-0---1-16:
+ formatted_number:  -30
+ formatted_string: |
+   -30
+-123456789--1-0---1-16:
+ formatted_number:  -123456790
+ formatted_string: |
+   -123456790
+0--1-0---1-32:
+ formatted_number: 0 
+ formatted_string: |
+  0 
+0.01--1-0---1-32:
+ formatted_number: 0 
+ formatted_string: |
+  0 
+0.001--1-0---1-32:
+ formatted_number: 0 
+ formatted_string: |
+  0 
+0.99--1-0---1-32:
+ formatted_number: 0 
+ formatted_string: |
+  0 
+5.49--1-0---1-32:
+ formatted_number: 10 
+ formatted_string: |
+  10 
+5.5--1-0---1-32:
+ formatted_number: 10 
+ formatted_string: |
+  10 
+1222.49--1-0---1-32:
+ formatted_number: 1220 
+ formatted_string: |
+  1220 
+1222.9999--1-0---1-32:
+ formatted_number: 1220 
+ formatted_string: |
+  1220 
+1222.4449--1-0---1-32:
+ formatted_number: 1220 
+ formatted_string: |
+  1220 
+1222.4499--1-0---1-32:
+ formatted_number: 1220 
+ formatted_string: |
+  1220 
+33--1-0---1-32:
+ formatted_number: 30 
+ formatted_string: |
+  30 
+123456789--1-0---1-32:
+ formatted_number: 123456790 
+ formatted_string: |
+  123456790 
+-0.01--1-0---1-32:
+ formatted_number: 0 
+ formatted_string: |
+  0 
+-0.001--1-0---1-32:
+ formatted_number: 0 
+ formatted_string: |
+  0 
+-0.99--1-0---1-32:
+ formatted_number: 0 
+ formatted_string: |
+  0 
+-5.49--1-0---1-32:
+ formatted_number: -10 
+ formatted_string: |
+  -10 
+-5.5--1-0---1-32:
+ formatted_number: -10 
+ formatted_string: |
+  -10 
+-1222.49--1-0---1-32:
+ formatted_number: -1220 
+ formatted_string: |
+  -1220 
+-1222.9999--1-0---1-32:
+ formatted_number: -1220 
+ formatted_string: |
+  -1220 
+-1222.4449--1-0---1-32:
+ formatted_number: -1220 
+ formatted_string: |
+  -1220 
+-1222.4499--1-0---1-32:
+ formatted_number: -1220 
+ formatted_string: |
+  -1220 
+-33--1-0---1-32:
+ formatted_number: -30 
+ formatted_string: |
+  -30 
+-123456789--1-0---1-32:
+ formatted_number: -123456790 
+ formatted_string: |
+  -123456790 
+0--1-0---2-16:
+ formatted_number: $ 0
+ formatted_string: |
+  $ 0
+0.01--1-0---2-16:
+ formatted_number: $ 0
+ formatted_string: |
+  $ 0
+0.001--1-0---2-16:
+ formatted_number: $ 0
+ formatted_string: |
+  $ 0
+0.99--1-0---2-16:
+ formatted_number: $ 0
+ formatted_string: |
+  $ 0
+5.49--1-0---2-16:
+ formatted_number: $ 10
+ formatted_string: |
+  $ 10
+5.5--1-0---2-16:
+ formatted_number: $ 10
+ formatted_string: |
+  $ 10
+1222.49--1-0---2-16:
+ formatted_number: $ 1220
+ formatted_string: |
+  $ 1220
+1222.9999--1-0---2-16:
+ formatted_number: $ 1220
+ formatted_string: |
+  $ 1220
