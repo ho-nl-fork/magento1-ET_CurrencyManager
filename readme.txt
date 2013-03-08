@@ -18,12 +18,12 @@ Magento CE:
 == Installation
 * Disable compilation if it is enabled (System -> Tools -> Compilation)
 * Disable cache if it is enabled (System -> Cache Management)
-* Download extension or install extension from Magento Connect
-* If you have downloaded it, copy all files from "install" folder to Magento root folder - where your index.php is
-* Log out from admin panel
-* Log in to admin panel with your login and password
+* Download the extension or install the extension from Magento Connect
+* If you have downloaded it, copy all files from the "install" folder to the Magento root folder - where your index.php is
+* Log out from the admin panel
+* Log in to the admin panel with your login and password
 * Set extension's parameters (System -> Configuration -> ET EXTENSIONS -> Currency Manager)
-* Run compilation process and enable cache if needed
+* Run the compilation process and enable cache if needed
 
 == Tests
 Alpha version of unit tests (too much test cases to use standard data providers)

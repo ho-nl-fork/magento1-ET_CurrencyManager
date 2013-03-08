@@ -23,7 +23,7 @@ class ET_CurrencyManager_Block_Adminhtml_Support
 {
     /**
      * Support tab
-     * version 1.0.0
+     * version 1.0.1
      */
     public function render(Varien_Data_Form_Element_Abstract $element)
     {
@@ -41,7 +41,7 @@ class ET_CurrencyManager_Block_Adminhtml_Support
         $moduleLink = $this->_getConfigValue($moduleNameId, 'permanentlink') . $linkParameters;
         $servicesLink = $this->_getConfigValue($moduleNameId, 'ourserviceslink') . $linkParameters;
 
-        $html = 
+        $html =
             '<style>
                 .line {border-top: 1px solid #c6c6c6; }
                 .developer-label {color: #000000; font-weight:bold; width: 150px;}
@@ -83,7 +83,7 @@ class ET_CurrencyManager_Block_Adminhtml_Support
                     <td class="developer-text line">' . $helper->__(
                         'Extension support is available through <a href="%s" target="_blank">issue tracking system' .
                         '</a>.<br>You can see information freely, but you will have to sign up to open a ticket.<br>' .
-                        '<br>Please, report all bugs and feature requests that are connected to this extension.<br>' .
+                        '<br>Please, report all bugs and feature requests that are related to this extension.<br>' .
                         '<br>If by some reason you can not submit a question, bug report or feature request to our ' .
                         'ticket system, you can write us an email - support@etwebsolutions.com.',
                         $moduleSupportLink) . '</td>
