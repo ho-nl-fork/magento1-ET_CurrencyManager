@@ -85,6 +85,7 @@
             <adminhtml>
                 <rewrite>
                     <catalog_product_helper_form_price>ET_CurrencyManager_Block_Adminhtml_Formprice</catalog_product_helper_form_price>
+                    <catalog_product_edit_tab_price_group>ET_CurrencyManager_Block_Adminhtml_Catalog_Product_Edit_Tab_Price_Group</catalog_product_edit_tab_price_group>
                 </rewrite>
                 <rewrite>
                     <catalog_product_edit_tab_options_option>ET_CurrencyManager_Block_Adminhtml_Catalog_Product_Edit_Tab_Options_Option</catalog_product_edit_tab_options_option>
