@@ -1,0 +1,7 @@
+install/app/code/community/ET/*                     app/code/community/ET/
+install/app/etc/modules/*                           app/etc/modules/
+install/app/design/frontend/base/default/layout/*   app/design/frontend/base/default/layout/
+install/app/design/frontend/base/default/template/* app/design/frontend/base/default/template/
+install/js/et/*                                     js/et/
+install/app/locale/en_US/*                          app/locale/en_US/
+install/app/locale/ru_RU/*                          app/locale/ru_RU/
