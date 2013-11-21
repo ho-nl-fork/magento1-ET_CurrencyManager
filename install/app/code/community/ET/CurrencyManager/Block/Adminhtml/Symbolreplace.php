@@ -71,7 +71,7 @@ class ET_CurrencyManager_Block_Adminhtml_Symbolreplace extends Mage_Adminhtml_Bl
         $html = '<label>' . $this->__('Replace Zero Price to:') . ' </label> ';
         $html .= '<input class="input-text" name="' . $this->getElement()->getName() . '[zerotext][]" value="'
             . $this->_getValue('zerotext/' . $row) . '" ' . $this->_getDisabled() . '/> ';
-        $html .= '<p class="nm"><small>' . $this->__('Leave empty for disable replace') . '</small></p>';
+        $html .= '<p class="nm"><small>' . $this->__('Leave empty for global value use') . '</small></p>';
         return $html;
     }
 

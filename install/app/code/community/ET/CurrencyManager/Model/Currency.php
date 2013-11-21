@@ -23,7 +23,7 @@ class ET_CurrencyManager_Model_Currency extends Mage_Directory_Model_Currency
     public function format($price, $options = array(), $includeContainer = true, $addBrackets = false)
     {
         if (method_exists($this, "formatPrecision")) {
-            $options = Mage::helper('currencymanager')->getOptions(array());
+            $options = Mage::helper('currencymanager')->getOptions($options);
 
             return $this->formatPrecision(
                 $price,
@@ -66,7 +66,7 @@ class ET_CurrencyManager_Model_Currency extends Mage_Directory_Model_Currency
                 //check against -0
                 $answer = $this->_formatWithPrecision($options, $optionsAdvanced, $price, $answer);
 
-                if (!($helper->isInOrder() & $optionsAdvanced['excludecheckout'])) {
+                if (!($helper->isInOrder() && $optionsAdvanced['excludecheckout'])) {
                     if ($price == 0) {
                         if (isset($optionsAdvanced['zerotext']) && $optionsAdvanced['zerotext'] != "") {
                             return $optionsAdvanced['zerotext'];
