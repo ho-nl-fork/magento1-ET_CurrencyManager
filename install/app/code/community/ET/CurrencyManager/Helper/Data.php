@@ -122,6 +122,10 @@ class ET_CurrencyManager_Helper_Data extends Mage_Core_Helper_Abstract
             if (isset($config['precision'])) { // precision must be in range -1 .. 30
                 $options['precision'] = min(30, max(-1, (int)$config['precision']));
             }
+
+            if (isset($config['zerotext'])) {
+                $optionsAdvanced['zerotext'] = $config['zerotext'];
+            }
         }
 
         if (isset($config['position'])) {
@@ -130,6 +134,7 @@ class ET_CurrencyManager_Helper_Data extends Mage_Core_Helper_Abstract
         if (isset($config['display'])) {
             $options['display'] = (int)$config['display'];
         }
+
 
         if (isset($config['input_admin'])) {
             if ($config['input_admin'] > 0) {
@@ -166,9 +171,7 @@ class ET_CurrencyManager_Helper_Data extends Mage_Core_Helper_Abstract
             $tmpOptions['symbol'] = $this->_getCurrencyOption($currency, $symbolReplace, 'symbol');
 
             if ($notCheckout) {
-                $tmpOptionsAdvanced['zerotext'] = $this->_getCurrencyOption(
-                    $currency, $symbolReplace, 'zerotext'
-                );
+                $tmpOptionsAdvanced['zerotext'] = $this->_getCurrencyOption($currency, $symbolReplace, 'zerotext');
 
                 $precision = $this->_getCurrencyOption($currency, $symbolReplace, 'precision', true);
                 if ($precision !== false) {

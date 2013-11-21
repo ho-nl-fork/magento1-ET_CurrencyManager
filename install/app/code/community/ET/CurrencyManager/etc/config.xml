@@ -22,7 +22,7 @@
     <modules>
         <ET_CurrencyManager>
             <name>ET Currency Manager</name>
-            <version>1.0.3</version>
+            <version>1.1.0</version>
             <descr>
                 <ru_RU><![CDATA[Модуль позволяет владельцу магазина просто и удобно управлять отображением цены: указывать свой символ валюты, количество знаков после запятой, позицию символа и др.]]>
                 </ru_RU>
@@ -59,6 +59,7 @@
                     <data>ET_CurrencyManager_Helper_Tax</data>
                 </rewrite>
             </tax>
+
         </helpers>
         <models>
             <directory>
@@ -85,7 +86,6 @@
             <adminhtml>
                 <rewrite>
                     <catalog_product_helper_form_price>ET_CurrencyManager_Block_Adminhtml_Formprice</catalog_product_helper_form_price>
-                    <catalog_product_edit_tab_price_group>ET_CurrencyManager_Block_Adminhtml_Catalog_Product_Edit_Tab_Price_Group</catalog_product_edit_tab_price_group>
                 </rewrite>
                 <rewrite>
                     <catalog_product_edit_tab_options_option>ET_CurrencyManager_Block_Adminhtml_Catalog_Product_Edit_Tab_Options_Option</catalog_product_edit_tab_options_option>
@@ -112,6 +112,17 @@
                 </connection>
             </currencymanager_read>
         </resources>
+        <events>
+            <controller_front_init_before>
+                <observers>
+                    <fix_currency_switch_url>
+                        <type>model</type>
+                        <class>currencymanager/observer</class>
+                        <method>fixCurrencySwitchUrl</method>
+                    </fix_currency_switch_url>
+                </observers>
+            </controller_front_init_before>
+        </events>
     </global>
 
     <default>
@@ -127,6 +138,9 @@
                 <position>8</position>
                 <display>2</display>
             </general>
+            <additional>
+                <fix_currency_switch_url>0</fix_currency_switch_url>
+            </additional>
         </currencymanager>
     </default>
 
@@ -139,6 +153,15 @@
                 </currencymanager>
             </updates>
         </layout>
+        <routers>
+            <currencymanager>
+                <use>standard</use>
+                <args>
+                    <module>ET_CurrencyManager</module>
+                    <frontName>currencymanager</frontName>
+                </args>
+            </currencymanager>
+        </routers>
     </frontend>
 
     <adminhtml>

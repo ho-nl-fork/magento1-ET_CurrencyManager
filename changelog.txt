@@ -14,9 +14,13 @@ TODO:
   Так как в ядре Магенто это не реализовано, то придётся писать на прямую в файлы /lib/Zend/Locale/Data/
   Since it is not implemented in the Magento core, it will have to write directly to files in /lib/Zend/Locale/Data/
 =====================================
-ver. 1.0.4 ()
-* fixed typos and grammar
 
+ver. 1.1.0 (30/09/2013)
+* fixed typos and grammar
+* format function doesn't ignore given parameters anymore (http://support.etwebsolutions.com/issues/610)
++ added French translation (thanks to Zuiko)
++ added global settings for "Replace Zero Price to" option (http://support.etwebsolutions.com/issues/936)
++ added fix for currency switch url (Magento by default loses get parameters in URL while switching currency)
 
 ver. 1.0.3 (10/12/2012)
 * fixed double rounding for stores, which use non base display currency (http://support.etwebsolutions.com/issues/470)
@@ -36,7 +40,7 @@ ver. 1.0.1 (13/09/2012)
 * fixed error which caused inability to get on extension's settings page (unnecessary BOM in helper)
 
 ver. 1.0.0 (31/08/2012)
-+ license type changed from OSL to ETWS Commercial License (ECL1)
++ license type changed from AFL to ETWS Free License v1 (EFL1)
 + code refactored for Magento standards
 + added link to extension settings in Currency Options Section
 + added additional information about extension support in settings section
