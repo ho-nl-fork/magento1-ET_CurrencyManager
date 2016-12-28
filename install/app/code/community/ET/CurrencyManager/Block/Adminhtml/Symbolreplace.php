@@ -52,6 +52,7 @@ class ET_CurrencyManager_Block_Adminhtml_Symbolreplace extends Mage_Adminhtml_Bl
         $html = '<li><fieldset>';
         $html .= $this->_getCurrencySelectHtml($row);
         $html .= $this->_getPrecisionHtml($row);
+        $html .= $this->_getMinDecimalCountHtml($row);
         $html .= $this->_getCutZeroHtml($row);
         $html .= $this->_getSuffixHtml($row);
         $html .= $this->_getSymbolPositionHtml($row);
@@ -120,6 +121,16 @@ class ET_CurrencyManager_Block_Adminhtml_Symbolreplace extends Mage_Adminhtml_Bl
         return $html;
     }
 
+    protected function _getMinDecimalCountHtml($row)
+    {
+        $html = '<label>' . $this->__('Minimum number of digits after the decimal point:') . ' </label> ';
+        $html .= '<input class="input-text" name="' . $this->getElement()->getName()
+            . '[min_decimal_count][]" value="' . $this->_getValue('min_decimal_count/' . $row)
+            . '" ' . $this->_getDisabled() . '/> ';
+        $html .= '<p class="nm"><small>' . $this->__('Leave empty for global value use') . '</small></p>';
+        return $html;
+    }
+
     protected function _getCutZeroHtml($row)
     {
         $html = '<label>' . $this->__('Cut Zero Decimals:') . ' </label> ';
@@ -135,7 +146,7 @@ class ET_CurrencyManager_Block_Adminhtml_Symbolreplace extends Mage_Adminhtml_Bl
 
     protected function _getPrecisionHtml($row)
     {
-        $html = '<label>' . $this->__('Precision:') . ' </label> ';
+        $html = '<label>' . $this->__('Display precision:') . ' </label> ';
         $html .= '<input class="input-text" name="' . $this->getElement()->getName() . '[precision][]" value="'
             . $this->_getValue('precision/' . $row) . '" ' . $this->_getDisabled() . '/> ';
         $html .= '<p class="nm"><small>' . $this->__('Leave empty for global value use') . '</small></p>';

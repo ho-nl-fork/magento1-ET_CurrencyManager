@@ -1,4 +1,4 @@
-=====================================
+﻿=====================================
 This file describes changes between versions of module ET_CurrencyManager for Magento.
 
 Legend:
@@ -15,6 +15,85 @@ TODO:
   Since it is not implemented in the Magento core, it will have to write directly to files in /lib/Zend/Locale/Data/
 =====================================
 
+ver. 1.3.1 (06/07/2016)
+* fixed issue with currency symbol in PDF files (html tags was visible)
+
+ver. 1.3.0 (04/04/2016)
+* fixed decimal symbol showing without decimal part in configurable products using minimal decimal count
++ added an ability to change group symbol in JavaScript
++ added an options to change group length in JavaScript
+
+ver. 1.2.7 (12/11/2015)
++ added an ability for extension developers to change price display options before price output
+
+ver. 1.2.6 (12/08/2015)
+* fixed JS error when product.js and configurable.js loaded before extension script et_currencymanager_round.js
+
+ver. 1.2.5 (05/03/2015)
+* fixed JS error in Configurable product view arising under certain extension settings
+
+ver. 1.2.4 (16/02/2015)
+* fixed incorrect totals on Paypal Express Review page when option "Exclude for checkout" is enabled
+* fixed some phrase translation (was no English phrases)
+
+ver. 1.2.3 (16/10/2014)
+* fixed currency symbol loosing in configurable products using specific options combination
+
+ver. 1.2.2 (08/10/2014)
+* fixed replace zero decimals with suffix javascript bug in configurable product when using thousands separator
+* fixed ReferenceError: extendProductConfigformatPrice is not defined bug
+* fixed undefined precision in config bug
++ added an ability for extension developers to influence on "Exclude for Checkout" check
+  (added an event to isInOrder function).
+  By default, enabling this setting partially disables formatting in the cart and checkout
+  (sales and checkout controllers).
+  Now developers are able to tell Currency Manager to disable formatting on the other pages as well.
+
+  How to:
+  1. 3rd party extension listens to 'et_currencymanager_checking_is_in_order_before' event.
+  Example
+  <et_currencymanager_checking_is_in_order_before>
+      <observers>
+          <xz>
+              <type>model</type>
+              <class>et_yandexmarketfeed/observer</class>
+              <method>modifyOrderModuleValues</method>
+          </xz>
+      </observers>
+  </et_currencymanager_checking_is_in_order_before>
+
+  2. In Observer.php we write a function that adds additional values.
+  Example
+  public function modifyOrderModuleValues(Varien_Event_Observer $observer){
+      $event = $observer->getEvent();
+      $orderModules = $event->getData('order_modules');
+      $moduleNames = $orderModules->getData('module_names');  // there are default values already (sales, checkout)
+
+      $newValues = array('onepagecheckout', 'second');
+      $moduleNames = array_merge($moduleNames,$newValues);
+      $orderModules->setData('module_names', $moduleNames);
+  }
+
+ver. 1.2.1 (20/12/2013)
++ added Magento CE 1.8.1.0 support (core tax functions have more parameters than before)
+* fixed rare errors on new feature (discard zeroes to the specified number of decimals)
+
+ver. 1.2.0 (29/11/2013)
++ added support for Magento 1.8.0.0 (extension JS files loading priority)
++ added feature to discard zeroes to the specified number of decimals instead of throwing away all of them. Examples:
+  for value = 0
+  9.0000 => 9
+  9.9999 => 9.9999
+  9.9000 => 9.9
+
+  for value = 2
+  9.0000 => 9.00
+  9.9999 => 9.9999
+  9.9000 => 9.90
++ JS code refactored (one file dropped)
+* option Precision title changed to Display Precision. Some option comments changed.
+* fixed double rounding for stores, which use non base display currency and product prices include taxes (http://support.etwebsolutions.com/issues/984)
+
 ver. 1.1.0 (30/09/2013)
 * fixed typos and grammar
 * format function doesn't ignore given parameters anymore (http://support.etwebsolutions.com/issues/610)
@@ -27,7 +106,6 @@ ver. 1.0.3 (10/12/2012)
 + custom option prices now use extension precision value on product edit page (http://support.etwebsolutions.com/issues/466)
 + template files moved from default to base (dropped native support for Magento 1.3.x according to Magento standards)
 + skin files moved from default to base (dropped native support for Magento 1.3.x according to Magento standards)
-
 
 ver. 1.0.2 (28/09/2012)
 * fixed problem with entering configuration in Magento 1.4.0.0

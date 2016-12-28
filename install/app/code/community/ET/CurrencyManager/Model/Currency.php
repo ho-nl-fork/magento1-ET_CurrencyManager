@@ -1,4 +1,5 @@
 <?php
+
 /**
  * NOTICE OF LICENSE
  *
@@ -16,19 +17,20 @@
  * @contacts   support@etwebsolutions.com
  * @license    http://shop.etwebsolutions.com/etws-license-free-v1/   ETWS Free License (EFL1)
  */
-
 class ET_CurrencyManager_Model_Currency extends Mage_Directory_Model_Currency
 {
 
     public function format($price, $options = array(), $includeContainer = true, $addBrackets = false)
     {
+        /** @var $helper ET_CurrencyManager_Helper_Data */
+        $helper = Mage::helper('currencymanager');
         if (method_exists($this, "formatPrecision")) {
-            $options = Mage::helper('currencymanager')->getOptions($options);
+            $options = $helper->getOptions($options);
 
             return $this->formatPrecision(
                 $price,
                 isset($options["precision"]) ? $options["precision"] : 2,
-                Mage::helper('currencymanager')->clearOptions($options),
+                $helper->clearOptions($options),
                 $includeContainer,
                 $addBrackets
             );
@@ -47,7 +49,7 @@ class ET_CurrencyManager_Model_Currency extends Mage_Directory_Model_Currency
     {
         /* @var $helper ET_CurrencyManager_Helper_Data */
         $helper = Mage::helper('currencymanager');
-
+        //$options['format'] = '#,##0.00¤'; // TODO: add ability to change format
         $answer = parent::formatTxt($price, $helper->clearOptions($options));
 
         if ($helper->isEnabled()) {
@@ -55,6 +57,18 @@ class ET_CurrencyManager_Model_Currency extends Mage_Directory_Model_Currency
 
             $optionsAdvanced = $helper->getOptions($options, false, $this->getCurrencyCode());
             $options = $helper->getOptions($options, true, $this->getCurrencyCode());
+            if (isset($options["precision"])) {
+                $price = round($price, $options["precision"]);
+            }
+
+            $data = new Varien_Object(array(
+                "price" => $price,
+                "format" => $options,
+            ));
+
+            Mage::dispatchEvent("currency_options_after_get", array("options" => $data));
+            $options = $data->getData("format");
+            $price = $data->getData("price");
 
             $answer = parent::formatTxt($price, $options);
 
@@ -62,10 +76,16 @@ class ET_CurrencyManager_Model_Currency extends Mage_Directory_Model_Currency
                 if (($moduleName == 'admin')) {
                     $answer = parent::formatTxt($price, $helper->clearOptions($options));
                 }
+                $minDecimalCount = $optionsAdvanced['min_decimal_count'];
+                $finalDecimalCount = $this->getPrecisionToCutZeroDecimals($price, $minDecimalCount);
+                if (isset($options['precision'])) {
+                    if ($finalDecimalCount <= $options['precision']) {
+                        $options['precision'] = $finalDecimalCount;
+                    }
+                }
 
                 //check against -0
                 $answer = $this->_formatWithPrecision($options, $optionsAdvanced, $price, $answer);
-
                 if (!($helper->isInOrder() && $optionsAdvanced['excludecheckout'])) {
                     if ($price == 0) {
                         if (isset($optionsAdvanced['zerotext']) && $optionsAdvanced['zerotext'] != "") {
@@ -101,6 +121,7 @@ class ET_CurrencyManager_Model_Currency extends Mage_Directory_Model_Currency
 
     protected function _cutZeroDecimal($options, $optionsAdvanced, $price, $answer)
     {
+        /** @var $helper ET_CurrencyManager_Helper_Data */
         $helper = Mage::helper('currencymanager');
         $zeroDecimal = (round($price, $optionsAdvanced['precision']) == round($price, 0));
         $suffix = isset($optionsAdvanced['cutzerodecimal_suffix']) ? $optionsAdvanced['cutzerodecimal_suffix'] : "";
@@ -164,4 +185,42 @@ class ET_CurrencyManager_Model_Currency extends Mage_Directory_Model_Currency
         return $data->getData("result");
     }
 
+    /*
+     * if Cut Zero Decimal = Yes
+     * formats number like this
+
+     * from 8.000 to 8
+     * from 8.100 to 8.1 or 8.10
+     * @return precision
+    */
+    protected function getPrecisionToCutZeroDecimals($value, $minPrecision = 1)
+    {
+        $precision = 0;
+        $possa = 1;
+        while ((float)($value * $possa) != (int)($value * $possa)) {
+
+            //0.999999999999999 case
+            $roundedOne = round(log10(abs((float)($value * $possa) - (int)($value * $possa))), 9);
+            //for correction -0 float zero
+            /*if($roundedOne == 0) {
+                $roundedOne = 0;
+            }*/
+            //0.00000000000001 case
+            $roundedZero = log10(abs((float)($value * $possa) - (int)($value * $possa)));
+
+            if ($roundedZero < -9 || $roundedOne == 0) {
+                break;
+            }
+            $possa *= 10;
+            $precision++;
+            //overflow error
+            if ($precision > 29) {
+                break;
+            }
+        }
+
+        // TODO: WTF do not used $value?
+        //$value = round($value, max(log10($possa), $minPrecision));
+        return max($precision, $minPrecision);
+    }
 }

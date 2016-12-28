@@ -1,4 +1,5 @@
 <?php
+
 /**
  * NOTICE OF LICENSE
  *
@@ -16,12 +17,11 @@
  * @contacts   support@etwebsolutions.com
  * @license    http://shop.etwebsolutions.com/etws-license-free-v1/   ETWS Free License (EFL1)
  */
-
-class ET_CurrencyManager_Helper_Tax extends Mage_Tax_Helper_Data
+class ET_CurrencyManager_Helper_Tax1810 extends Mage_Tax_Helper_Data
 {
 
     /**
-     * Get product price with all tax settings processing CM wrapper
+     * Get product price with all tax settings processing
      *
      * @param   Mage_Catalog_Model_Product $product
      * @param   float $price inputed product price
@@ -29,12 +29,12 @@ class ET_CurrencyManager_Helper_Tax extends Mage_Tax_Helper_Data
      * @param   null|Mage_Customer_Model_Address $shippingAddress
      * @param   null|Mage_Customer_Model_Address $billingAddress
      * @param   null|int $ctc customer tax class
-     * @param   mixed $store
+     * @param   null|Mage_Core_Model_Store $store
      * @param   bool $priceIncludesTax flag what price parameter contain tax
      * @return  float
      */
     public function getPrice($product, $price, $includingTax = null, $shippingAddress = null, $billingAddress = null,
-        $ctc = null, $store = null, $priceIncludesTax = null
+        $ctc = null, $store = null, $priceIncludesTax = null, $roundPrice = true
     ) {
         if (!$price) {
             return $price;
@@ -45,7 +45,7 @@ class ET_CurrencyManager_Helper_Tax extends Mage_Tax_Helper_Data
         }
         Mage::app()->getStore($store)->setDoNotRoundET(true);
         $result = parent::getPrice($product, $price, $includingTax, $shippingAddress, $billingAddress, $ctc,
-            $store, $priceIncludesTax);
+            $store, $priceIncludesTax, $roundPrice);
         Mage::app()->getStore($store)->setDoNotRoundET(false);
         return $result;
     }

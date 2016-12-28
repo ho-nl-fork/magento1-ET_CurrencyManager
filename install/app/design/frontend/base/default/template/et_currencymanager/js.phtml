@@ -16,7 +16,14 @@
  * @contacts   support@etwebsolutions.com
  * @license    http://shop.etwebsolutions.com/etws-license-free-v1/   ETWS Free License (EFL1)
  */
+//sometimes our js shown before /js/varien/product.js
+//calling this function will update Product.Config to our formatPrice
 ?>
 <script type="text/javascript">
-etCurrencyManagerJsConfig=<?php print $this->getJsonConfig();?>
+    etCurrencyManagerJsConfig =<?php print $this->getJsonConfig();?>;
+    try {
+        extendProductConfigformatPrice();
+    } catch (e) {
+
+    }
 </script>

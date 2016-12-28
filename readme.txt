@@ -14,6 +14,8 @@ Magento CE:
 1.5.x (tested in 1.5.1.0)
 1.6.x (tested in 1.6.2.0)
 1.7.x (tested in 1.7.0.2)
+1.8.x (tested in 1.8.1.0)
+1.9.x (tested in 1.9.2.4)
 
 == Installation
 * Disable compilation if it is enabled (System -> Tools -> Compilation)

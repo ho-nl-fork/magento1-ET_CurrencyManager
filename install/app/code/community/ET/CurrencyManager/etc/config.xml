@@ -22,7 +22,7 @@
     <modules>
         <ET_CurrencyManager>
             <name>ET Currency Manager</name>
-            <version>1.1.0</version>
+            <version>1.3.1</version>
             <descr>
                 <ru_RU><![CDATA[Модуль позволяет владельцу магазина просто и удобно управлять отображением цены: указывать свой символ валюты, количество знаков после запятой, позицию символа и др.]]>
                 </ru_RU>
@@ -54,11 +54,11 @@
             <currencymanager>
                 <class>ET_CurrencyManager_Helper</class>
             </currencymanager>
-            <tax>
+            <!--tax>
                 <rewrite>
                     <data>ET_CurrencyManager_Helper_Tax</data>
                 </rewrite>
-            </tax>
+            </tax-->
 
         </helpers>
         <models>
@@ -121,8 +121,22 @@
                         <class>currencymanager/observer</class>
                         <method>fixCurrencySwitchUrl</method>
                     </fix_currency_switch_url>
+                    <rewrire_classes_depending_on_version>
+                        <type>model</type>
+                        <class>currencymanager/observer</class>
+                        <method>rewriteClasses</method>
+                    </rewrire_classes_depending_on_version>
                 </observers>
             </controller_front_init_before>
+            <currency_options_after_get>
+                <observers>
+                    <remove_html_tags>
+                        <type>model</type>
+                        <class>currencymanager/observer</class>
+                        <method>removeHtmlTags</method>
+                    </remove_html_tags>
+                </observers>
+            </currency_options_after_get>
         </events>
     </global>
 
@@ -138,9 +152,11 @@
                 <precision>0</precision>
                 <position>8</position>
                 <display>2</display>
+                <min_decimal_count>2</min_decimal_count>
             </general>
             <additional>
                 <fix_currency_switch_url>0</fix_currency_switch_url>
+                <rewrite_classes>1</rewrite_classes>
             </additional>
         </currencymanager>
     </default>

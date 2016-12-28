@@ -38,6 +38,21 @@ class ET_CurrencyManager_Model_Locale extends Mage_Core_Model_Locale
             $parentFormat["requiredPrecision"] = $options["precision"];
             $parentFormat["precision"] = $options["precision"];
         }
+        $configAdditional = Mage::getStoreConfig('currencymanager/additional');
+
+        if (isset($configAdditional["change_decimal_group_symbol"])) {
+            if ($configAdditional["change_decimal_group_symbol"] == 1) {
+                $parentFormat["groupSymbol"] = isset($configAdditional["decimal_group_symbol"])
+                    ? $configAdditional["decimal_group_symbol"]
+                    : "";
+            }
+        }
+
+        if (isset($configAdditional["decimal_group_length"])) {
+            if ($configAdditional["decimal_group_length"] == 1) {
+                $parentFormat["groupLength"] = 3;
+            }
+        }
 
         return $parentFormat;
     }

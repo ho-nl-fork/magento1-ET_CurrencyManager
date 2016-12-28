@@ -22,11 +22,17 @@
 <layout version="0.1.0">
     <default>
         <reference name="head">
+            <action ifconfig="currencymanager/general/enabled" method="addItem">
+                <type>js</type>
+                <name>et/currencymanager/et_currencymanager_round.js</name>
+            </action>
+        </reference>
+        <reference name="before_body_end">
             <block type="currencymanager/js" name="currencymanager.js.config">
-                <action ifconfig="currencymanager/general/enabled" method="setTemplate"><name>et_currencymanager/js.phtml</name></action>
+                <action ifconfig="currencymanager/general/enabled" method="setTemplate">
+                    <name>et_currencymanager/js.phtml</name>
+                </action>
             </block>
-            <action ifconfig="currencymanager/general/cutzerodecimal" method="addItem"><type>js</type><name>et/currencymanager/et_currencymanager.js</name></action>
-            <action ifconfig="currencymanager/general/enabled" method="addItem"><type>js</type><name>et/currencymanager/et_currencymanager_round.js</name></action>
         </reference>
     </default>
 </layout>

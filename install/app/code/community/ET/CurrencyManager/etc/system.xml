@@ -145,17 +145,27 @@
                             <show_in_store>1</show_in_store>
                         </heading_global>
                         <precision translate="label comment">
-                            <label>Precision</label>
-                            <comment>Number of decimal (e.g. 0, 1, 2). Default: 0</comment>
+                            <label>Display precision</label>
+                            <comment><![CDATA[Number of decimal (e.g. 0, 1, 2). Default: 0<br>Examples<br>4 => 12.3811<br>3 => 12.381<br>2 => 12.38<br>1 => 12.4<br>0 => 12<br>-1 => 10]]></comment>
                             <frontend_type>text</frontend_type>
                             <sort_order>310</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </precision>
+                        <min_decimal_count translate="label comment">
+                            <label>Minimum number of digits after the decimal point</label>
+                            <comment><![CDATA[Discard zeroes, leaving specified number of them. Cannot be greater than Display Precision setting. Default: 2. Available values: 1, 2, 3, 4.<br>Examples:<br>for value = 0<br> 9.0000 => 9<br> 9.9999 => 9.9999<br> 9.9000 => 9.9<br><br> for value = 2<br> 9.0000 => 9.00<br> 9.9999 => 9.9999<br> 9.9000 => 9.90]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>315</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </min_decimal_count>
                         <cutzerodecimal translate="label comment">
                             <label>Cut Zero Decimals</label>
                             <comment>If Yes price will be 99 instead of 99.00, but 99.99 if price 99.99</comment>
+                            <comment><![CDATA[Unlike Display Precision, this setting discards only zeroes.<br>Example:<br>99.99 => 99.99<br>99.00 => 99]]></comment>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>320</sort_order>
@@ -172,6 +182,7 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
+                            <depends><cutzerodecimal>1</cutzerodecimal></depends>
                         </cutzerodecimal_suffix>
 
                         <position translate="label">
@@ -242,6 +253,42 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </fix_currency_switch_url>
+
+                        <change_decimal_group_symbol translate="label comment">
+                            <label>Change group symbol for JavaScript</label>
+                            <comment><![CDATA[Examples:<br> for " ": 9999.00 => 9 999.00<br> for ",": 9999.00 => 9,999.00]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </change_decimal_group_symbol>
+
+                        <decimal_group_symbol translate="label comment">
+                            <label>Group symbol</label>
+                            <comment><![CDATA[Examples:<br> for empty: 9999.00 => 9999.00<br> for space: 9999.00 => 9 999.00<br> for ",": 9999.00 => 9,999.00]]></comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <change_decimal_group_symbol>1</change_decimal_group_symbol>
+                            </depends>
+                        </decimal_group_symbol>
+
+                        <decimal_group_length translate="label comment">
+                            <label>Change group length for JavaScript to 3</label>
+                            <comment><![CDATA[In products with options some currency/locale combinations make unexpected prices output.<br>Examples:<br> without fix 99999.99 => 9.99.99,99<br> with fix 99999.99 => 99.999,99]]></comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </decimal_group_length>
+
                     </fields>
                 </additional>
             </groups>
