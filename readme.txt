@@ -3,9 +3,9 @@ Permanent link: http://shop.etwebsolutions.com/eng/et-currency-manager.html
 Support link: http://support.etwebsolutions.com/projects/et-currency-manager/roadmap
 
 == Short Description
-Currency Manager lets shop owner manage price display in an easy
-and convenient way: show custom currency symbol, change its position,
-change number of decimals and etc.
+Currency Manager lets the shop owner to manage the price display in an easy
+and convenient way: show custom currency symbols, change its position,
+change the number of decimals and etc.
 
 == Version Compatibility
 Magento CE:
@@ -18,14 +18,7 @@ Magento CE:
 1.9.x (tested in 1.9.2.4)
 
 == Installation
-* Disable compilation if it is enabled (System -> Tools -> Compilation)
-* Disable cache if it is enabled (System -> Cache Management)
-* Download the extension or install the extension from Magento Connect
-* If you have downloaded it, copy all files from the "install" folder to the Magento root folder - where your index.php is
-* Log out from the admin panel
-* Log in to the admin panel with your login and password
-* Set extension's parameters (System -> Configuration -> ET EXTENSIONS -> Currency Manager)
-* Run the compilation process and enable cache if needed
+http://doc.etwebsolutions.com/en/instruction/reviewnotify/install
 
-== Tests
-Alpha version of unit tests (too much test cases to use standard data providers)
+== Developer Information
+http://doc.etwebsolutions.com/en/instruction/reviewnotify/technical-information-for-the-developer

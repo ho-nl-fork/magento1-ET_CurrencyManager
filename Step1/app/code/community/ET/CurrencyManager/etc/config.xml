@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * NOTICE OF LICENSE
+ *
+ * You may not sell, sub-license, rent or lease
+ * any portion of the Software or Documentation to anyone.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade to newer
+ * versions in the future.
+ *
+ * @category   ET
+ * @package    ET_CurrencyManager
+ * @copyright  Copyright (c) 2012 ET Web Solutions (http://etwebsolutions.com)
+ * @contacts   support@etwebsolutions.com
+ * @license    http://shop.etwebsolutions.com/etws-license-free-v1/   ETWS Free License (EFL1)
+ */
+ -->
+<config>
+    <modules>
+        <ET_CurrencyManager>
+            <name>ET Currency Manager</name>
+            <version>1.3.3</version>
+            <descr>
+                <ru_RU><![CDATA[Модуль позволяет владельцу магазина просто и удобно управлять отображением цены: указывать свой символ валюты, количество знаков после запятой, позицию символа и др.]]>
+                </ru_RU>
+                <en_US><![CDATA[Currency Manager lets shop owner manage price display in an easy and convenient way: show custom currency symbol, change its position, change number of decimals and etc.]]>
+                </en_US>
+            </descr>
+            <permanentlink>
+                <ru_RU>http://shop.etwebsolutions.com/rus/et-currency-manager.html</ru_RU>
+                <en_US>http://shop.etwebsolutions.com/eng/et-currency-manager.html</en_US>
+            </permanentlink>
+            <license>
+                <ru_RU><![CDATA[ETWS Свободная лицензия (EFL1)]]></ru_RU>
+                <en_US><![CDATA[ETWS Free License (EFL1)]]></en_US>
+            </license>
+            <licenselink>
+                <ru_RU>http://shop.etwebsolutions.com/rus/etws-license-free-v1</ru_RU>
+                <en_US>http://shop.etwebsolutions.com/eng/etws-license-free-v1</en_US>
+            </licenselink>
+            <redminelink>http://support.etwebsolutions.com/projects/et-currency-manager/roadmap</redminelink>
+            <ourserviceslink>
+                <ru_RU>http://shop.etwebsolutions.com/rus/our-services</ru_RU>
+                <en_US>http://shop.etwebsolutions.com/eng/our-services</en_US>
+            </ourserviceslink>
+        </ET_CurrencyManager>
+    </modules>
+
+    <global>
+        <helpers>
+            <currencymanager>
+                <class>ET_CurrencyManager_Helper</class>
+            </currencymanager>
+            <!--tax>
+                <rewrite>
+                    <data>ET_CurrencyManager_Helper_Tax</data>
+                </rewrite>
+            </tax-->
+
+        </helpers>
+        <models>
+            <directory>
+                <rewrite>
+                    <currency>ET_CurrencyManager_Model_Currency</currency>
+                </rewrite>
+            </directory>
+
+            <core>
+                <rewrite>
+                    <locale>ET_CurrencyManager_Model_Locale</locale>
+                    <store>ET_CurrencyManager_Model_Store</store>
+                </rewrite>
+            </core>
+
+            <currencymanager>
+                <class>ET_CurrencyManager_Model</class>
+            </currencymanager>
+        </models>
+        <blocks>
+            <currencymanager>
+                <class>ET_CurrencyManager_Block</class>
+            </currencymanager>
+            <adminhtml>
+                <rewrite>
+                    <catalog_product_helper_form_price>ET_CurrencyManager_Block_Adminhtml_Formprice</catalog_product_helper_form_price>
+                </rewrite>
+                <rewrite>
+                    <catalog_product_edit_tab_options_option>ET_CurrencyManager_Block_Adminhtml_Catalog_Product_Edit_Tab_Options_Option</catalog_product_edit_tab_options_option>
+                </rewrite>
+            </adminhtml>
+        </blocks>
+        <resources>
+            <currencymanager_setup>
+                <setup>
+                    <module>ET_CurrencyManager</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </currencymanager_setup>
+            <currencymanager_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </currencymanager_write>
+            <currencymanager_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </currencymanager_read>
+        </resources>
+        <events>
+            <controller_front_init_before>
+                <observers>
+                    <fix_currency_switch_url>
+                        <type>model</type>
+                        <class>currencymanager/observer</class>
+                        <method>fixCurrencySwitchUrl</method>
+                    </fix_currency_switch_url>
+                    <rewrire_classes_depending_on_version>
+                        <type>model</type>
+                        <class>currencymanager/observer</class>
+                        <method>rewriteClasses</method>
+                    </rewrire_classes_depending_on_version>
+                </observers>
+            </controller_front_init_before>
+            <currency_options_after_get>
+                <observers>
+                    <remove_html_tags>
+                        <type>model</type>
+                        <class>currencymanager/observer</class>
+                        <method>removeHtmlTags</method>
+                    </remove_html_tags>
+                </observers>
+            </currency_options_after_get>
+        </events>
+    </global>
+
+    <default>
+        <currencymanager>
+            <general>
+                <enabled>1</enabled>
+                <excludecheckout>1</excludecheckout>
+                <enabledadm>0</enabledadm>
+                <input_admin>0</input_admin>
+                <cutzerodecimal>0</cutzerodecimal>
+                <cutzerodecimal_suffix>,-</cutzerodecimal_suffix>
+                <precision>0</precision>
+                <position>8</position>
+                <display>2</display>
+                <min_decimal_count>2</min_decimal_count>
+            </general>
+            <additional>
+                <fix_currency_switch_url>0</fix_currency_switch_url>
+                <rewrite_classes>1</rewrite_classes>
+            </additional>
+        </currencymanager>
+    </default>
+
+
+    <frontend>
+        <layout>
+            <updates>
+                <currencymanager>
+                    <file>et_currencymanager.xml</file>
+                </currencymanager>
+            </updates>
+        </layout>
+        <routers>
+            <currencymanager>
+                <use>standard</use>
+                <args>
+                    <module>ET_CurrencyManager</module>
+                    <frontName>currencymanager</frontName>
+                </args>
+            </currencymanager>
+        </routers>
+    </frontend>
+
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <currencymanager translate="title" module="currencymanager">
+                                            <title>ET Currency Manager</title>
+                                            <sort_order>400</sort_order>
+                                        </currencymanager>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <translate>
+            <modules>
+                <ET_CurrencyManager>
+                    <files>
+                        <default>ET_Currencymanager.csv</default>
+                    </files>
+                </ET_CurrencyManager>
+            </modules>
+        </translate>
+    </adminhtml>
+    <phpunit>
+        <suite>
+            <modules>
+                <ET_CurrencyManager />
+            </modules>
+        </suite>
+    </phpunit>
+</config>
