@@ -21,7 +21,7 @@
 <config>
     <modules>
         <ET_CurrencyManager>
-            <active>false</active>
+            <active>true</active>
             <codePool>community</codePool>
         </ET_CurrencyManager>
     </modules>
